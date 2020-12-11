@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 #include <dlfcn.h>
 #include "LiteSH.hpp"
 
