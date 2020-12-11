@@ -22,8 +22,8 @@ int main(int argc, char **argv) {
         int newsock, size;
         socklen_t clnlen;
         char otv[1024];
-	string answer;
-        string obuf="";
+	std::string answer;
+        string obuf="";t
         int numh,num;
         newsock = accept(sock, (struct sockaddr*)&client, &clnlen);
         printf("New client: %s\n",inet_ntoa(client.sin_addr));
@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
                 if ((rez=createprocess(buf[1],&pid,&ppid)) == 0){
                     strcpy(otv,"Процесс не создан");
                 } else if(rez==1) {
-                    obuf="Процесс создан!\npid = "+ answer=to_string(pid) +"\nppid = " +answer=to_string(ppid);
+                    obuf="Процесс создан!\npid = "+ answer=std::to_string(pid) +"\nppid = " +answer=std::to_string(ppid);
                     strcpy(otv,obuf.c_str());
                 }
 
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
                     //cout << "Фоновый процесс не создан";
                     strcpy(otv,obuf.c_str());
                 } else if(rez==1) {
-                    obuf="Фоновый процесс создан!\npid = "+ answer=to_string(pid) +"\nppid = " +answer=to_string(ppid);
+                    obuf="Фоновый процесс создан!\npid = "+ answer=std::to_string(pid) +"\nppid = " +answer=std::to_string(ppid);
                     strcpy(otv,obuf.c_str());
                 }
             } else if ((arg=="--ReciveSignal") || (arg=="-rs")) {
@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
                     strcpy(otv,obuf.c_str());;
                     break;
                 }
-                obuf="pid = "+answer=to_string(getpid())+"\nОжидать сигнала?";
+                obuf="pid = "+answer=std::to_string(getpid())+"\nОжидать сигнала?";
                 strcpy(otv,obuf.c_str());
                 send(newsock, otv, sizeof(otv), 0);
                 sleep(1);
